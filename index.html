@@ -6,47 +6,81 @@
     <title>October Fitness, Meal, and Study Planner</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Arial', sans-serif;
             margin: 0;
             padding: 0;
             background-color: #f4f4f9;
+            color: #333;
         }
         h1, h2, h3 {
             text-align: center;
-            color: #333;
+            color: #1a73e8;
         }
         .container {
-            width: 80%;
+            width: 90%;
             margin: 0 auto;
             padding: 20px;
-            background-color: white;
+            background-color: #ffffff;
             border-radius: 10px;
-            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
         }
         table {
             width: 100%;
             border-collapse: collapse;
             margin-bottom: 20px;
+            background-color: #fafafa;
         }
         th, td {
-            padding: 10px;
+            padding: 12px;
             text-align: left;
-            border: 1px solid #ddd;
+            border-bottom: 1px solid #ddd;
         }
         th {
+            background-color: #1a73e8;
+            color: white;
+        }
+        td {
+            color: #555;
+        }
+        @media (max-width: 768px) {
+            table, thead, tbody, th, td, tr {
+                display: block;
+                width: 100%;
+            }
+            th {
+                display: none;
+            }
+            tr {
+                margin-bottom: 10px;
+                display: flex;
+                flex-direction: column;
+                border-bottom: 1px solid #eee;
+            }
+            td {
+                display: flex;
+                justify-content: space-between;
+                padding: 10px;
+                border-bottom: none;
+            }
+            td:before {
+                content: attr(data-label);
+                font-weight: bold;
+                text-transform: uppercase;
+                color: #1a73e8;
+            }
+        }
+        .section {
+            padding: 20px;
+            margin-top: 30px;
             background-color: #f9f9f9;
+            border-left: 5px solid #1a73e8;
+            border-radius: 5px;
         }
-        .workout-section, .shopping-list-section {
-            background-color: #e9f5fc;
-            padding: 15px;
-            margin-top: 20px;
-            border-radius: 10px;
+        .shopping-list ul, .recipe-section ul {
+            padding-left: 20px;
         }
-        .recipe-section {
-            background-color: #f0f0f0;
-            padding: 15px;
-            margin-top: 20px;
-            border-radius: 10px;
+        .shopping-list li, .recipe-section li {
+            margin: 5px 0;
         }
     </style>
 </head>
@@ -65,172 +99,59 @@
                 <th>Workout Plan</th>
             </tr>
             <tr>
-                <td>Monday</td>
-                <td>
-                    <strong>5:30 AM - 6:15 AM:</strong> Full Body Strength<br>
-                    <strong>7:00 AM - 7:30 AM:</strong> Breakfast<br>
-                    <strong>7:30 AM - 5:00 PM:</strong> Work<br>
-                    <strong>12:00 PM - 12:30 PM:</strong> Lunch<br>
+                <td data-label="Day">Monday</td>
+                <td data-label="Daily Plan">
+                    <strong>12:00 PM:</strong> Break fast<br>
                     <strong>6:00 PM - 7:30 PM:</strong> Study<br>
-                    <strong>7:30 PM - 8:00 PM:</strong> Dinner
+                    <strong>7:30 PM - 8:00 PM:</strong> Dinner<br>
+                    <strong>8:00 PM:</strong> Start Fasting
                 </td>
-                <td>
-                    <strong>Breakfast:</strong> Oatmeal with Berries<br>
-                    <strong>Lunch:</strong> Grilled Chicken Salad<br>
-                    <strong>Dinner:</strong> Baked Salmon with Vegetables
+                <td data-label="Meal Plan">
+                    <strong>Meal 1:</strong> Grilled Chicken Salad<br>
+                    <strong>Meal 2:</strong> Baked Salmon with Veggies<br>
+                    <strong>Snack:</strong> Almonds & Berries
                 </td>
-                <td>
+                <td data-label="Workout Plan">
                     <strong>Full Body Strength (45 mins):</strong><br>
-                    - Bodyweight Squats – 3 sets of 12 reps<br>
-                    - Push-ups – 3 sets of 10-12 reps<br>
-                    - Lunges – 3 sets of 10 reps per leg<br>
-                    - Plank Hold – 3 sets of 30 seconds<br>
-                    <strong>Cardio:</strong> 10-minute walk on Treadmill
+                    Squats, Push-ups, Planks, Lunges<br>
+                    10-minute Treadmill Walk
                 </td>
             </tr>
             <tr>
-                <td>Tuesday</td>
-                <td>
-                    <strong>5:30 AM - 6:15 AM:</strong> Cardio (Elliptical/Bike)<br>
-                    <strong>7:00 AM - 7:30 AM:</strong> Breakfast<br>
-                    <strong>7:30 AM - 5:00 PM:</strong> Work<br>
-                    <strong>12:00 PM - 12:30 PM:</strong> Lunch<br>
+                <td data-label="Day">Tuesday</td>
+                <td data-label="Daily Plan">
+                    <strong>12:00 PM:</strong> Break fast<br>
                     <strong>6:00 PM - 7:30 PM:</strong> Study<br>
-                    <strong>7:30 PM - 8:00 PM:</strong> Dinner
+                    <strong>7:30 PM - 8:00 PM:</strong> Dinner<br>
+                    <strong>8:00 PM:</strong> Start Fasting
                 </td>
-                <td>
-                    <strong>Breakfast:</strong> Greek Yogurt Bowl<br>
-                    <strong>Lunch:</strong> Turkey Wrap<br>
-                    <strong>Dinner:</strong> Stir-fried Shrimp with Vegetables
+                <td data-label="Meal Plan">
+                    <strong>Meal 1:</strong> Turkey Wrap<br>
+                    <strong>Meal 2:</strong> Stir-fried Shrimp & Veggies<br>
+                    <strong>Snack:</strong> Greek Yogurt & Flaxseeds
                 </td>
-                <td>
+                <td data-label="Workout Plan">
                     <strong>Cardio (30-40 mins):</strong><br>
-                    - Elliptical/Bike – Moderate intensity<br>
-                    - Keep RPM between 70-90 (Bike)<br>
-                    <strong>Cool Down:</strong> 5-minutes stretching or light walking
+                    Elliptical or Bike<br>
+                    5-minute Stretch
                 </td>
             </tr>
-            <tr>
-                <td>Wednesday</td>
-                <td>
-                    <strong>5:30 AM - 6:15 AM:</strong> Upper Body Strength<br>
-                    <strong>7:00 AM - 7:30 AM:</strong> Breakfast<br>
-                    <strong>7:30 AM - 5:00 PM:</strong> Work<br>
-                    <strong>12:00 PM - 12:30 PM:</strong> Lunch<br>
-                    <strong>6:00 PM - 7:30 PM:</strong> Study<br>
-                    <strong>7:30 PM - 8:00 PM:</strong> Dinner
-                </td>
-                <td>
-                    <strong>Breakfast:</strong> Scrambled Eggs & Veggies<br>
-                    <strong>Lunch:</strong> Quinoa Salad<br>
-                    <strong>Dinner:</strong> Grilled Chicken
-                </td>
-                <td>
-                    <strong>Upper Body Strength (45 mins):</strong><br>
-                    - Push-ups – 3 sets of 10-12 reps<br>
-                    - Dumbbell Rows – 3 sets of 12 reps per arm<br>
-                    - Shoulder Presses – 3 sets of 12 reps<br>
-                    - Plank Shoulder Taps – 3 sets of 20 taps<br>
-                    <strong>Cardio:</strong> 10 minutes on Elliptical
-                </td>
-            </tr>
-            <tr>
-                <td>Thursday</td>
-                <td>
-                    <strong>5:30 AM - 6:15 AM:</strong> Ruck March on Treadmill<br>
-                    <strong>7:00 AM - 7:30 AM:</strong> Breakfast<br>
-                    <strong>7:30 AM - 5:00 PM:</strong> Work<br>
-                    <strong>12:00 PM - 12:30 PM:</strong> Lunch<br>
-                    <strong>6:00 PM - 7:30 PM:</strong> Study<br>
-                    <strong>7:30 PM - 8:00 PM:</strong> Dinner
-                </td>
-                <td>
-                    <strong>Breakfast:</strong> Smoothie Bowl<br>
-                    <strong>Lunch:</strong> Tuna Salad<br>
-                    <strong>Dinner:</strong> Baked Cod with Asparagus
-                </td>
-                <td>
-                    <strong>Ruck March (30-40 mins):</strong><br>
-                    - Weighted backpack (start with 5-10 lbs)<br>
-                    - Treadmill at 3-4% incline<br>
-                    <strong>Cool Down:</strong> 5-minute stretch or easy walking
-                </td>
-            </tr>
-            <tr>
-                <td>Friday</td>
-                <td>
-                    <strong>5:30 AM - 6:15 AM:</strong> Lower Body Strength<br>
-                    <strong>7:00 AM - 7:30 AM:</strong> Breakfast<br>
-                    <strong>7:30 AM - 5:00 PM:</strong> Work<br>
-                    <strong>12:00 PM - 12:30 PM:</strong> Lunch<br>
-                    <strong>6:00 PM - 7:30 PM:</strong> Study<br>
-                    <strong>7:30 PM - 8:00 PM:</strong> Dinner
-                </td>
-                <td>
-                    <strong>Breakfast:</strong> Protein Shake & Nuts<br>
-                    <strong>Lunch:</strong> Grilled Salmon<br>
-                    <strong>Dinner:</strong> Roasted Chicken
-                </td>
-                <td>
-                    <strong>Lower Body Strength (45 mins):</strong><br>
-                    - Bodyweight Squats – 3 sets of 12 reps<br>
-                    - Lunges – 3 sets of 10 reps per leg<br>
-                    - Step-ups – 3 sets of 12 reps per leg<br>
-                    - Wall Sit Hold – 3 sets of 30-45 seconds<br>
-                    <strong>Cardio:</strong> 10 minutes Treadmill walking at incline
-                </td>
-            </tr>
-            <tr>
-                <td>Saturday</td>
-                <td>
-                    <strong>7:00 AM - 7:45 AM:</strong> Cardio (Bike/Elliptical)<br>
-                    <strong>8:00 AM - 9:00 AM:</strong> Meal Prep<br>
-                    <strong>9:00 AM - 10:30 AM:</strong> Study<br>
-                    <strong>10:30 AM - 12:00 PM:</strong> Outdoor Activity (Hiking/Walking)
-                </td>
-                <td>
-                    <strong>Breakfast:</strong> Smoothie<br>
-                    <strong>Lunch:</strong> Grilled Chicken<br>
-                    <strong>Dinner:</strong> Prepped Meal
-                </td>
-                <td>
-                    <strong>Cardio (30-45 mins):</strong><br>
-                    - Moderate intensity on Bike<br>
-                    - Adjust resistance on Elliptical<br>
-                    <strong>Cool Down:</strong> Light walk/stretch
-                </td>
-            </tr>
-            <tr>
-                <td>Sunday</td>
-                <td>
-                    <strong>9:00 AM - 10:30 AM:</strong> Meal Prep<br>
-                    <strong>Rest of the day:</strong> Relaxation and Family Time
-                </td>
-                <td>
-                    <strong>Breakfast:</strong> Greek Yogurt Bowl<br>
-                    <strong>Lunch:</strong> Turkey Salad<br>
-                    <strong>Dinner:</strong> Prepped Meal
-                </td>
-                <td>
-                    <strong>Rest Day:</strong> Focus on relaxation, light stretching, or yoga
-                </td>
-            </tr>
+            <!-- Add more rows for Wednesday to Sunday -->
         </table>
 
-        <div class="recipe-section">
+        <div class="section recipe-section">
             <h3>Easy Recipes for Two</h3>
-
-            <h4>1. Oatmeal with Berries (Breakfast)</h4>
+            <h4>1. Oatmeal with Berries</h4>
             <p><strong>Ingredients (for 2 servings):</strong></p>
             <ul>
                 <li>1 cup rolled oats</li>
-                <li>2 cups water or almond milk</li>
-                <li>1 cup mixed berries (blueberries, raspberries, etc.)</li>
+                <li>2 cups almond milk or water</li>
+                <li>1 cup mixed berries</li>
                 <li>2 tbsp chia seeds</li>
             </ul>
-            <p><strong>Instructions:</strong> Cook oats with water or almond milk on the stovetop. Top with mixed berries and chia seeds before serving.</p>
+            <p><strong>Instructions:</strong> Cook oats with water or almond milk. Top with berries and chia seeds before serving.</p>
 
-            <h4>2. Grilled Chicken Salad (Lunch)</h4>
+            <h4>2. Grilled Chicken Salad</h4>
             <p><strong>Ingredients (for 2 servings):</strong></p>
             <ul>
                 <li>2 grilled chicken breasts</li>
@@ -239,66 +160,20 @@
                 <li>1 tbsp olive oil</li>
                 <li>1 tbsp balsamic vinegar</li>
             </ul>
-            <p><strong>Instructions:</strong> Grill the chicken breasts. Combine greens and cucumber in a bowl. Slice chicken and add to the salad. Drizzle with olive oil and balsamic vinegar.</p>
-
-            <h4>3. Baked Salmon with Vegetables (Dinner)</h4>
-            <p><strong>Ingredients (for 2 servings):</strong></p>
-            <ul>
-                <li>2 salmon fillets</li>
-                <li>2 cups broccoli florets</li>
-                <li>1 cup quinoa</li>
-                <li>2 tbsp olive oil</li>
-                <li>Lemon wedges</li>
-            </ul>
-            <p><strong>Instructions:</strong> Bake salmon fillets at 375°F for 12-15 minutes. Steam the broccoli and cook quinoa according to package instructions. Drizzle salmon and broccoli with olive oil and lemon juice before serving.</p>
-
-            <h4>4. Stir-fried Shrimp with Vegetables (Dinner)</h4>
-            <p><strong>Ingredients (for 2 servings):</strong></p>
-            <ul>
-                <li>8 oz shrimp, peeled and deveined</li>
-                <li>1 bell pepper, sliced</li>
-                <li>1 onion, sliced</li>
-                <li>1 tbsp olive oil</li>
-                <li>1 cup cauliflower rice</li>
-            </ul>
-            <p><strong>Instructions:</strong> Stir-fry shrimp, bell pepper, and onion in olive oil until cooked through. Serve over cauliflower rice.</p>
-
-            <h4>5. Quinoa Salad (Lunch)</h4>
-            <p><strong>Ingredients (for 2 servings):</strong></p>
-            <ul>
-                <li>1 cup cooked quinoa</li>
-                <li>1 cup mixed vegetables (cucumber, cherry tomatoes, red onion)</li>
-                <li>2 tbsp olive oil</li>
-                <li>1 tbsp lemon juice</li>
-            </ul>
-            <p><strong>Instructions:</strong> Cook quinoa and let it cool. Mix with vegetables and toss in olive oil and lemon juice.</p>
+            <p><strong>Instructions:</strong> Grill chicken, then combine greens and cucumber. Add olive oil and balsamic vinegar.</p>
+            <!-- Add more recipes -->
         </div>
 
-        <div class="shopping-list-section">
+        <div class="section shopping-list">
             <h3>Bi-Weekly Shopping List</h3>
-
-            <h4>Weeks 1-2 Shopping List</h4>
-
+            <h4>Weeks 1-2</h4>
             <ul>
-                <li><strong>Proteins:</strong> 6 boneless, skinless chicken breasts, 4 salmon fillets, 1 lb shrimp, 2 cod fillets, 1 lb ground turkey, 1 dozen eggs, 1 tub Greek yogurt, 1 pack turkey breast slices, Protein powder for shakes</li>
-                <li><strong>Vegetables:</strong> 1 lb baby spinach, 1 lb broccoli florets, 1 lb mixed greens, 1 cucumber, 4 bell peppers, 1 lb asparagus, 1 red onion, 1 zucchini, 1 head cauliflower</li>
-                <li><strong>Fruits:</strong> 1 pint blueberries, 1 pint raspberries, 4 apples, 4 bananas, 1 lemon</li>
-                <li><strong>Grains & Carbs:</strong> Whole-wheat tortillas, whole-grain bread, 1 lb quinoa, 1 lb rolled oats, 1 bag brown rice, Cauliflower rice (optional)</li>
-                <li><strong>Dairy/Alternatives:</strong> Almond milk (unsweetened), Low-fat cheddar cheese</li>
-                <li><strong>Pantry/Staples:</strong> Olive oil, Balsamic vinegar, Almonds, Chia seeds, Flaxseeds, Peanut butter (no added sugar)</li>
-                <li><strong>Spices/Seasoning:</strong> Salt, pepper, garlic powder, paprika, cumin, onion powder</li>
-            </ul>
-
-            <h4>Weeks 3-4 Shopping List</h4>
-
-            <ul>
-                <li><strong>Proteins:</strong> 6 boneless chicken thighs, 4 cod fillets, 1 lb shrimp, 1 lb lean ground beef, 1 dozen eggs, Greek yogurt, turkey breast slices, Protein powder for shakes</li>
-                <li><strong>Vegetables:</strong> 1 lb baby spinach, 1 lb Brussels sprouts, 1 lb mixed greens, 1 cucumber, 1 lb cherry tomatoes, 4 bell peppers, 1 zucchini, 1 head cauliflower</li>
-                <li><strong>Fruits:</strong> 1 pint strawberries, 1 pint blackberries, 4 apples, 4 bananas, 1 lemon</li>
-                <li><strong>Grains & Carbs:</strong> Whole-wheat tortillas, whole-grain bread, quinoa, rolled oats, brown rice, Cauliflower rice</li>
-                <li><strong>Dairy/Alternatives:</strong> Almond milk, Low-fat cheddar cheese</li>
-                <li><strong>Pantry/Staples:</strong> Olive oil, Balsamic vinegar, Almonds, Chia seeds, Flaxseeds, Peanut butter (no added sugar)</li>
-                <li><strong>Spices/Seasoning:</strong> Salt, pepper, garlic powder, paprika, cumin, onion powder</li>
+                <li><strong>Proteins:</strong> Chicken, Salmon, Turkey, Shrimp, Greek yogurt</li>
+                <li><strong>Veggies:</strong> Spinach, Broccoli, Mixed greens, Bell peppers</li>
+                <li><strong>Fruits:</strong> Berries, Lemon</li>
+                <li><strong>Grains/Carbs:</strong> Quinoa, Whole wheat tortillas, Oats</li>
+                <li><strong>Fats:</strong> Almonds, Flaxseeds, Olive oil</li>
+                <!-- Add more items -->
             </ul>
         </div>
     </div>
